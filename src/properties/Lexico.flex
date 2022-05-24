@@ -38,6 +38,9 @@ espacio=[ \t \r]+
 /* Operador Suma */
 ( "+" ) {lexemas=yytext(); return Suma;}
 
+/* Numero */
+("(-"{D}+")")|({D}+"."+{D})|("(-"{D}+"."+{D}+")")|{D}+|("-"+{D}+"."+{D}) {lexemas=yytext(); return Numero;}
+
 /* Operador Resta */
 ( "-" ) {lexemas=yytext(); return Resta;}
 
@@ -62,8 +65,6 @@ espacio=[ \t \r]+
 /* Identificador */
 {L}({L}|{D})* {lexemas=yytext(); return Identificador;}
 
-/* Numero */
-("(-"{D}+")")|({D}+"."+{D})|("(-"{D}+"."+{D}+")")|{D}+ {lexemas=yytext(); return Numero;}
 
 /* Error de analisis */
  . {return ERROR;}
