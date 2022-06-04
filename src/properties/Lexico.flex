@@ -24,6 +24,48 @@ espacio=[ \t \r]+
 /* Comillas */
 ( "\"" ) {lexemas=yytext(); return Comillas;}
 
+/* Tipos de dato nativos */
+( include ) {lexemas=yytext(); return Include;}
+
+( define ) {lexemas=yytext(); return Define;}
+
+( break ) {lexemas=yytext(); return Break;}
+
+( const ) {lexemas=yytext(); return Const;}
+
+( continue ) {lexemas=yytext(); return Continue;}
+
+( default ) {lexemas=yytext(); return Default;}
+
+( register ) {lexemas=yytext(); return Register;}
+
+( unsigned ) {lexemas=yytext(); return Unsigned;}
+
+( struct ) {lexemas=yytext(); return Struct;}
+
+( switch ) {lexemas=yytext(); return Switch;}
+
+( case ) {lexemas=yytext(); return Case;}
+
+( typedef ) {lexemas=yytext(); return Typedef;}
+
+/* Tipos de dato funciones*/
+( printf ) {lexemas=yytext(); return Printf;}
+
+( scanf ) {lexemas=yytext(); return Scanf;}
+
+( cin ) {lexemas=yytext(); return Cin;}
+
+( cout ) {lexemas=yytext(); return Cout;}
+
+( using ) {lexemas=yytext(); return Using;}
+
+( namespace ) {lexemas=yytext(); return Namespace;}
+
+( std ) {lexemas=yytext(); return Std;}
+
+( void ) {lexemas=yytext(); return Void;}
+
 /* Tipos de datos */
 ( byte ) {lexemas=yytext(); return Byte;}
 
@@ -31,13 +73,14 @@ espacio=[ \t \r]+
 
 ( char  ) {lexemas=yytext(); return Char;}
 
+( short ) {lexemas=yytext(); return Short;}
+
 ( long  ) {lexemas=yytext(); return Long;}
 
 ( float  ) {lexemas=yytext(); return Float;}
 
 ( double ) {lexemas=yytext(); return Double;}
 
-/* Tipo de dato String */
 ( String ) {lexemas=yytext(); return Cadena;}
 
 /* Palabra reservada If */

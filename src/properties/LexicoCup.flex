@@ -30,6 +30,48 @@ espacio=[ \t \r \n]+
 /* Comillas */
 ( "\"" ) {return new Symbol(sym.Comillas, yychar, yyline, yytext());}
 
+/* Nativos */
+( include ) {return new Symbol(sym.Include, yychar, yyline, yytext());}
+
+( define ) {return new Symbol(sym.Define, yychar, yyline, yytext());}
+
+( break ) {return new Symbol(sym.Break, yychar, yyline, yytext());}
+
+( const ) {return new Symbol(sym.Const, yychar, yyline, yytext());}
+
+( continue ) {return new Symbol(sym.Continue, yychar, yyline, yytext());}
+
+( default ) {return new Symbol(sym.Default, yychar, yyline, yytext());}
+
+( register ) {return new Symbol(sym.Register, yychar, yyline, yytext());}
+
+( unsigned ) {return new Symbol(sym.Usigned, yychar, yyline, yytext());}
+
+( struct ) {return new Symbol(sym.Struct, yychar, yyline, yytext());}
+
+( switch ) {return new Symbol(sym.Switch, yychar, yyline, yytext());}
+
+( case ) {return new Symbol(sym.Case, yychar, yyline, yytext());}
+
+( typedef ) {return new Symbol(sym.Typedef, yychar, yyline, yytext());}
+
+/* Nativos */
+( printf ) {return new Symbol(sym.Printf, yychar, yyline, yytext());}
+
+( scanf ) {return new Symbol(sym.Scanf, yychar, yyline, yytext());}
+
+( cin ) {return new Symbol(sym.Cin, yychar, yyline, yytext());}
+
+( cout ) {return new Symbol(sym.Cout, yychar, yyline, yytext());}
+
+( using ) {return new Symbol(sym.Using, yychar, yyline, yytext());}
+
+( namespace ) {return new Symbol(sym.Namespace, yychar, yyline, yytext());}
+
+( std ) {return new Symbol(sym.Std, yychar, yyline, yytext());}
+
+( void ) {return new Symbol(sym.Void, yychar, yyline, yytext());}
+
 /* Tipos de datos */
 ( int ) {return new Symbol(sym.Int, yychar, yyline, yytext());}
 
@@ -37,13 +79,14 @@ espacio=[ \t \r \n]+
 
 ( char ) {return new Symbol(sym.Char, yychar, yyline, yytext());}
 
+( short ) {return new Symbol(sym.Short, yychar, yyline, yytext());}
+
 ( long ) {return new Symbol(sym.Long, yychar, yyline, yytext());}
 
 ( float ) {return new Symbol(sym.Float, yychar, yyline, yytext());}
 
 ( double ) {return new Symbol(sym.Double, yychar, yyline, yytext());}
 
-/* Tipo de dato String */
 ( String ) {return new Symbol(sym.Cadena, yychar, yyline, yytext());}
 
 /* Palabra reservada If */

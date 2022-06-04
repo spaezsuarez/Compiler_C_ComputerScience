@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import properties.LexemasAnalyzer;
 import static util.Constants.Tokens;
+import properties.Sintaxis.cup;
 
 public class FrmAnalizador extends javax.swing.JFrame {
 
@@ -29,6 +30,7 @@ public class FrmAnalizador extends javax.swing.JFrame {
      */
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
         BotonAnalisis = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         Resultado = new javax.swing.JTextArea();
@@ -36,6 +38,7 @@ public class FrmAnalizador extends javax.swing.JFrame {
         txtAnalizarLex = new javax.swing.JTextArea();
         btnArchivo = new javax.swing.JButton();
         Borrar1 = new javax.swing.JButton();
+        btnArchivo1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,6 +75,14 @@ public class FrmAnalizador extends javax.swing.JFrame {
             }
         });
 
+        btnArchivo1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        btnArchivo1.setText("Análisis sintáctico");
+        btnArchivo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnArchivo1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -79,16 +90,21 @@ public class FrmAnalizador extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(BotonAnalisis)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                        .addComponent(Borrar1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2))
-                .addGap(73, 73, 73))
+                        .addComponent(btnArchivo1)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(40, 40, 40)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(BotonAnalisis)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                                .addComponent(Borrar1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane2))
+                        .addGap(73, 73, 73))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,7 +119,9 @@ public class FrmAnalizador extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 508, Short.MAX_VALUE)
                     .addComponent(jScrollPane1))
-                .addContainerGap(150, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addComponent(btnArchivo1)
+                .addContainerGap(102, Short.MAX_VALUE))
         );
 
         pack();
@@ -132,7 +150,6 @@ public class FrmAnalizador extends javax.swing.JFrame {
                 case Cadena:
                     resultado += "  <Tipo de dato>\t" + lexicos.lexemas + "\n";
                     break;
-
                 case Int:
                     resultado += "  <Reservada int>\t" + lexicos.lexemas + "\n";
                     break;
@@ -219,11 +236,25 @@ public class FrmAnalizador extends javax.swing.JFrame {
         txtAnalizarLex.setText(null);
     }//GEN-LAST:event_Borrar1ActionPerformed
 
+    private void btnArchivo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArchivo1ActionPerformed
+        String ST = Resultado.getText();
+        Sintaxis s = new Sintaxis(new Analizador.LexicoCup(new StringReader(ST)));
+        try {
+            s.parse();
+            txtAnalizarSin.setText("Analisis realizado correctamente");
+            txtAnalizarSin.setForeground(new Color(25, 111, 61));
+        } catch (Exception ex) {
+            Symbol sym = s.getS();
+            txtAnalizarSin.setText("Error de sintaxis. Linea: " + (sym.right + 1) + " Columna: " + (sym.left + 1) + ", Texto: "
+            " + sym.value + """);             txtAnalizarSin.setForeground(Color.red);
+    }//GEN-LAST:event_btnArchivo1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Borrar1;
     private javax.swing.JButton BotonAnalisis;
     private javax.swing.JTextArea Resultado;
     private javax.swing.JButton btnArchivo;
+    private javax.swing.JButton btnArchivo1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea txtAnalizarLex;
