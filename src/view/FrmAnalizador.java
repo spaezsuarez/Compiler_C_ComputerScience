@@ -8,7 +8,7 @@ import java.nio.file.Files;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
-import properties.LexiconAnalyzer;
+import properties.LexemasAnalyzer;
 import static util.Constants.Tokens;
 
 public class FrmAnalizador extends javax.swing.JFrame {
@@ -18,6 +18,8 @@ public class FrmAnalizador extends javax.swing.JFrame {
      */
     public FrmAnalizador() {
         initComponents();
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -27,10 +29,6 @@ public class FrmAnalizador extends javax.swing.JFrame {
      */
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
-
         BotonAnalisis = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         Resultado = new javax.swing.JTextArea();
@@ -115,7 +113,7 @@ public class FrmAnalizador extends javax.swing.JFrame {
         int cont = 1;
 
         String expr = (String) Resultado.getText();
-        LexiconAnalyzer lexicos = new LexiconAnalyzer(new StringReader(expr));
+        LexemasAnalyzer lexicos = new LexemasAnalyzer(new StringReader(expr));
         String resultado = "LINEA " + cont + "\t\tSIMBOLO\n";
         while (true) {
             Tokens token = lexicos.yylex();
