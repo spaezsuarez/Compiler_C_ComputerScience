@@ -53,7 +53,7 @@ public class Constants {
         LessThan,
         Equal,
         NotEqual,
-        GreatherEqualThan,
+        GreaterEqualThan,
         LessEqualThan,
         LeftShift,
         RightShift,

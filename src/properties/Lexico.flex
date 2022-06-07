@@ -139,7 +139,7 @@ espacio=[ \t \r]+
 
 ( "!=" ) {lexemas = yytext(); return NotEqual;}
 
-( ">=" ) {lexemas = yytext(); return GreatherEqualThan;}
+( ">=" ) {lexemas = yytext(); return GreaterEqualThan;}
 
 ( "<=" ) {lexemas = yytext(); return LessEqualThan;}
 

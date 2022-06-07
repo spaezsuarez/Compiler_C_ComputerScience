@@ -45,7 +45,7 @@ espacio=[ \t \r \n]+
 
 ( register ) {return new Symbol(sym.Register, yychar, yyline, yytext());}
 
-( unsigned ) {return new Symbol(sym.Usigned, yychar, yyline, yytext());}
+( unsigned ) {return new Symbol(sym.Unsigned, yychar, yyline, yytext());}
 
 ( struct ) {return new Symbol(sym.Struct, yychar, yyline, yytext());}
 
@@ -142,7 +142,7 @@ espacio=[ \t \r \n]+
 
 ( "!=" ) {return new Symbol(sym.NotEqual, yychar, yyline, yytext());}
 
-( ">=" ) {return new Symbol(sym.GreatherEqualThan, yychar, yyline, yytext());}
+( ">=" ) {return new Symbol(sym.GreaterEqualThan, yychar, yyline, yytext());}
 
 ( "<=" ) {return new Symbol(sym.LessEqualThan, yychar, yyline, yytext());}
 
