@@ -378,6 +378,7 @@ public class FrmAnalizador extends javax.swing.JFrame {
 
     private void BotonAnalisisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAnalisisActionPerformed
         try {
+            txtAnalizarLex.setForeground(Color.BLACK);
             analizarLexico();
         } catch (IOException ex) {
             Logger.getLogger(FrmAnalizador.class.getName()).log(Level.SEVERE, null, ex);

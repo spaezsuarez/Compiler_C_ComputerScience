@@ -31,7 +31,7 @@ espacio=[ \t \r \n]+
 ( "\"" ) {return new Symbol(sym.Comillas, yychar, yyline, yytext());}
 
 /* Nativos */
-( include ) {return new Symbol(sym.Include, yychar, yyline, yytext());}
+( #include ) {return new Symbol(sym.Include, yychar, yyline, yytext());}
 
 ( define ) {return new Symbol(sym.Define, yychar, yyline, yytext());}
 

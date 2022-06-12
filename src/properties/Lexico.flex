@@ -25,7 +25,7 @@ espacio=[ \t \r]+
 ( "\"" ) {lexemas=yytext(); return Comillas;}
 
 /* Tipos de dato nativos */
-( include ) {lexemas=yytext(); return Include;}
+( #include ) {lexemas=yytext(); return Include;}
 
 ( define ) {lexemas=yytext(); return Define;}
 
