@@ -29,8 +29,9 @@ terminal Int, Byte, Char, Short, Long, Float, Double, Cadena,
         Parent_a, Parent_c, Llave_a, Llave_c, Corchete_a, Corchete_c,
         Main, P_coma, Punto, Identificador, Numero, ERROR;
 
-non terminal INICIO, SENTENCIA, DECLARACION, IF, IF_ELSE,
-    SENTENCIA_BOOLEANA;
+non terminal INICIO, SENTENCIA, T_DATO, OPERADOR, OPERADOR_LOGICO,
+    OPERADOR_RELACIONAL, OPERADOR_ATRIBUCION, OPERADOR_BOOLEANO,
+    ASIGNACION_VARIABLE, DECLARACION, SENTENCIA_BOOLEANA, IF, IF_ELSE;
 
 start with INICIO;
 
@@ -46,9 +47,30 @@ SENTENCIA ::=
     SENTENCIA IF_ELSE |
     IF_ELSE 
 ;
+T_DATO ::= Int | Byte | Char | Short | Long | Float | Double | Cadena
+;
+OPERADOR ::= Asignation | Add | Resta | Times | Divide | Module
+;
+OPERADOR_LOGICO ::= DoubleAnd | DoubleOr | Not | And | Or
+;
+OPERADOR_RELACIONAL ::= GreatherThan | LessThan | Equal | NotEqual | GreaterEqualThan | LessEqualThan | LeftShift | RightShift
+;
+OPERADOR_ATRIBUCION ::= PlusEqual | Increment | Decrement | MinusEqual | TimesEqual | DivideEqual | ModuleEqual
+;
+OPERADOR_BOOLEANO ::= True | False
+;
+ASIGNACION_VARIABLE ::= T_DATO | " "
+;
 DECLARACION ::=
-    Cadena Identificador Equal Comillas Comillas P_coma |
-    Cadena Identificador Equal Comillas Identificador Comillas P_coma
+    T_DATO Identificador P_coma |
+    ASIGNACION_VARIABLE Identificador OPERADOR_ATRIBUCION Numero P_coma |
+    ASIGNACION_VARIABLE Identificador OPERADOR_ATRIBUCION Identificador P_coma |
+    ASIGNACION_VARIABLE Identificador Asignation Numero P_coma |
+    ASIGNACION_VARIABLE Identificador Asignation Identificador P_coma |
+    ASIGNACION_VARIABLE Identificador OPERADOR_RELACIONAL Numero P_coma |
+    ASIGNACION_VARIABLE Identificador OPERADOR_RELACIONAL Identificador P_coma |
+    Cadena Identificador Asignation Comillas Comillas P_coma |
+    Cadena Identificador Asignation Comillas Identificador Comillas P_coma
 ;
 SENTENCIA_BOOLEANA ::= 
     True | 
@@ -60,6 +82,6 @@ SENTENCIA_BOOLEANA ::=
 ;
 IF ::= If Parent_a SENTENCIA_BOOLEANA Parent_c Llave_a SENTENCIA Llave_c
 ;
-IF_ELSE ::= If Parent_a SENTENCIA_BOOLEANA Parent_c Llave_a SENTENCIA Llave_c Else Llave_a SENTENCIA Llave_c
+IF_ELSE ::= IF Else Llave_a SENTENCIA Llave_c
 ;
 
