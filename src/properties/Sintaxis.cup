@@ -67,15 +67,15 @@ OPERADOR_BOOLEANO ::= True | False
 ASIGNACION_VARIABLE ::= T_DATO | ""
 ;
 DECLARACION ::=
-    T_DATO Identificador P_coma |
+    ASIGNACION_VARIABLE Identificador P_coma |
     ASIGNACION_VARIABLE Identificador OPERADOR_ATRIBUCION Numero P_coma |
     ASIGNACION_VARIABLE Identificador OPERADOR_ATRIBUCION Identificador P_coma |
     ASIGNACION_VARIABLE Identificador Asignation Numero P_coma |
     ASIGNACION_VARIABLE Identificador Asignation Identificador P_coma |
     ASIGNACION_VARIABLE Identificador OPERADOR_RELACIONAL Numero P_coma |
     ASIGNACION_VARIABLE Identificador OPERADOR_RELACIONAL Identificador P_coma |
-    Cadena Identificador Asignation Comillas Comillas P_coma |
-    Cadena Identificador Asignation Comillas Identificador Comillas P_coma
+    ASIGNACION_VARIABLE Identificador Asignation Comillas Comillas P_coma |
+    ASIGNACION_VARIABLE Identificador Asignation Comillas Identificador Comillas P_coma
 ;
 SENTENCIA_BOOLEANA ::= 
     True | 
