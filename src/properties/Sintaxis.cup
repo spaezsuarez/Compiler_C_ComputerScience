@@ -30,8 +30,9 @@ terminal Int, Byte, Char, Short, Long, Float, Double, Cadena,
         Main, P_coma, Punto, Identificador, Numero, ERROR;
 
 non terminal INICIO, SENTENCIA, T_DATO, OPERADOR, OPERADOR_LOGICO,
-    OPERADOR_RELACIONAL, OPERADOR_ATRIBUCION, OPERADOR_BOOLEANO,
-    ASIGNACION_VARIABLE, DECLARACION, SENTENCIA_BOOLEANA, IF, IF_ELSE;
+    OPERADOR_RELACIONAL, OPERADOR_CORRIMIENTO, OPERADOR_ATRIBUCION,
+    OPERADOR_UNARIO, OPERADOR_BOOLEANO, ASIGNACION_VARIABLE, DECLARACION,
+    SENTENCIA_BOOLEANA, IF, IF_ELSE, WHILE;
 
 start with INICIO;
 
@@ -53,13 +54,17 @@ OPERADOR ::= Asignation | Add | Resta | Times | Divide | Module
 ;
 OPERADOR_LOGICO ::= DoubleAnd | DoubleOr | Not | And | Or
 ;
-OPERADOR_RELACIONAL ::= GreatherThan | LessThan | Equal | NotEqual | GreaterEqualThan | LessEqualThan | LeftShift | RightShift
+OPERADOR_RELACIONAL ::= GreatherThan | LessThan | Equal | NotEqual | GreaterEqualThan | LessEqualThan
+;
+OPERADOR_CORRIMIENTO ::= LeftShift | RightShift
 ;
 OPERADOR_ATRIBUCION ::= PlusEqual | Increment | Decrement | MinusEqual | TimesEqual | DivideEqual | ModuleEqual
 ;
+OPERADOR_UNARIO ::= Increment | Decrement
+;
 OPERADOR_BOOLEANO ::= True | False
 ;
-ASIGNACION_VARIABLE ::= T_DATO | " "
+ASIGNACION_VARIABLE ::= T_DATO | ""
 ;
 DECLARACION ::=
     T_DATO Identificador P_coma |
@@ -78,10 +83,15 @@ SENTENCIA_BOOLEANA ::=
     Identificador Numero |
     Identificador Identificador |
     Identificador Comillas Comillas |
-    Identificador Comillas Identificador Comillas
+    Identificador Comillas Identificador Comillas |
+    Identificador OPERADOR_RELACIONAL Identificador |
+    Identificador OPERADOR_RELACIONAL Numero |
+    Numero OPERADOR_RELACIONAL Identificador |
+    Numero OPERADOR_RELACIONAL Numero
 ;
 IF ::= If Parent_a SENTENCIA_BOOLEANA Parent_c Llave_a SENTENCIA Llave_c
 ;
 IF_ELSE ::= IF Else Llave_a SENTENCIA Llave_c
 ;
-
+WHILE ::= While Parent_a SENTENCIA_BOOLEANA Parent_c Llave_a SENTENCIA Llave_c
+;

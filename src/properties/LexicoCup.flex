@@ -146,16 +146,13 @@ espacio=[ \t \r \n]+
 
 ( "<=" ) {return new Symbol(sym.LessEqualThan, yychar, yyline, yytext());}
 
+/*Operadores de corrimiento*/
 ( "<<" ) {return new Symbol(sym.LeftShift, yychar, yyline, yytext());}
 
 ( ">>" ) {return new Symbol(sym.RightShift, yychar, yyline, yytext());}
 
 /* Operadores Atribucion */
 ( "+=" ) {return new Symbol(sym.PlusEqual, yychar, yyline, yytext());}
-
-( "++" ) {return new Symbol(sym.Increment, yychar, yyline, yytext());}
-
-( "--" ) {return new Symbol(sym.Decrement, yychar, yyline, yytext());}
 
 ( "-=" ) {return new Symbol(sym.MinusEqual, yychar, yyline, yytext());}
 
@@ -164,6 +161,11 @@ espacio=[ \t \r \n]+
 ( "/=" ) {return new Symbol(sym.DivideEqual, yychar, yyline, yytext());}
 
 ( "%=" ) {return new Symbol(sym.ModuleEqual, yychar, yyline, yytext());}
+
+/* Operadores unarios*/
+( "++" ) {return new Symbol(sym.Increment, yychar, yyline, yytext());}
+
+( "--" ) {return new Symbol(sym.Decrement, yychar, yyline, yytext());}
 
 /*Operadores Booleanos*/
 ( true ) {return new Symbol(sym.True, yychar, yyline, yytext());}
