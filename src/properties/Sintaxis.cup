@@ -64,7 +64,7 @@ OPERADOR_UNARIO ::= Increment | Decrement
 ;
 OPERADOR_BOOLEANO ::= True | False
 ;
-ASIGNACION_VARIABLE ::= T_DATO | ""
+ASIGNACION_VARIABLE ::= T_DATO | 
 ;
 DECLARACION ::=
     ASIGNACION_VARIABLE Identificador P_coma |
