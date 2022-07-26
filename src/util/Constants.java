@@ -74,6 +74,7 @@ public class Constants {
         Corchete_c,
         Main,
         P_coma,
+        Dos_P,
         Punto,
         Identificador,
         Numero,
