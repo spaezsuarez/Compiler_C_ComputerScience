@@ -80,6 +80,7 @@ OPERADOR_UNARIO ::=
     Increment | Decrement
 ;
 DECLARACION ::=
+    Identificador OPERADOR_UNARIO |
     Identificador OPERADOR_UNARIO P_coma |
     Identificador OPERADOR_ATRIBUCION Numero P_coma |
     Identificador OPERADOR_ATRIBUCION Identificador P_coma |
@@ -96,7 +97,7 @@ DECLARACION ::=
     T_DATO Identificador Asignation Comillas Identificador Comillas P_coma
 ;
 DECLARACION_FOR ::=
-    T_DATO Identificador |
+    T_DATO Identificador Asignation Numero|
     Identificador
 ;
 SENTENCIA_BOOLEANA ::=
