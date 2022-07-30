@@ -21,6 +21,8 @@ int main(){
     switch(a){
         case b:
             int b;
+        case asdsad123:
+            float b;
         default:
             int x;
     }
