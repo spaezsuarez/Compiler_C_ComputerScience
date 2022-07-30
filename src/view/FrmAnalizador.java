@@ -412,6 +412,7 @@ public class FrmAnalizador extends javax.swing.JFrame {
             txtAnalizarLex.setText("Analisis realizado correctamente");
             txtAnalizarLex.setForeground(new Color(25, 111, 61));
         } catch (Exception ex) {
+            System.out.println(ex);
             Symbol sym = s.getS();
             txtAnalizarLex.setText("Error de sintaxis. Linea: " + (sym.right + 1) + " Columna: " + (sym.left + 1) + ", Texto: \"" + sym.value + "\"");
             txtAnalizarLex.setForeground(Color.red);

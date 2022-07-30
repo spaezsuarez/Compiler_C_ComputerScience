@@ -1,0 +1,35 @@
+int main(){
+
+    if(a>1213){
+        int a;
+    }
+
+    if(a>1213){
+        int a;
+    }else{
+        float b;
+    }
+
+    for(int h; a<2; a++){
+        int b;
+    }
+
+    do{
+        int a = 0;
+    }while(a<0);
+
+    switch(a){
+        case b:
+            int b;
+        default:
+            int x;
+    }
+
+    while(x!=a26){
+        int p;
+    }
+
+    printf(a);
+    printf("a");
+
+}

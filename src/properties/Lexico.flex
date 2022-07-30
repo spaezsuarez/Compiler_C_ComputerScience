@@ -186,8 +186,14 @@ espacio=[ \t \r]+
 /* Punto y Coma */
 ( ";" ) {lexemas=yytext(); return P_coma;}
 
+/* Dos puntos */
+( ":" ) {lexemas=yytext(); return Dos_P;}
+
 /* Punto */
 ( "." ) {lexemas=yytext(); return Punto;}
+
+/* Coma */
+( "," ) {lexemas=yytext(); return Coma;}
 
 /* Identificador */
 {L}({L}|{D})* {lexemas=yytext(); return Identificador;}

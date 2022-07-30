@@ -76,6 +76,7 @@ public class Constants {
         P_coma,
         Dos_P,
         Punto,
+        Coma,
         Identificador,
         Numero,
         ERROR

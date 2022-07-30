@@ -27,11 +27,11 @@ terminal Int, Byte, Char, Short, Long, Float, Double, Cadena,
         LeftShift, RightShift, PlusEqual, Increment, Decrement, MinusEqual, TimesEqual, DivideEqual, ModuleEqual,
         True, False,
         Parent_a, Parent_c, Llave_a, Llave_c, Corchete_a, Corchete_c,
-        Main, P_coma, Dos_P, Punto, Identificador, Numero, ERROR;
+        Main, P_coma, Dos_P, Punto, Coma, Identificador, Numero, ERROR;
 
 non terminal INICIO, SENTENCIA, T_DATO, OPERADOR, OPERADOR_LOGICO,
     OPERADOR_RELACIONAL, OPERADOR_CORRIMIENTO, OPERADOR_ATRIBUCION,
-    OPERADOR_UNARIO, OPERADOR_BOOLEANO, ASIGNACION_VARIABLE, DECLARACION,
+    OPERADOR_UNARIO, DECLARACION, DECLARACION_FOR,
     SENTENCIA_BOOLEANA, IF, IF_ELSE, FOR, DO_WHILE, SWITCH_CASE, SWITCH, WHILE, PRINTF;
 
 start with INICIO;
@@ -74,27 +74,32 @@ OPERADOR_CORRIMIENTO ::=
     LeftShift | RightShift
 ;
 OPERADOR_ATRIBUCION ::=
-    PlusEqual | Increment | Decrement | MinusEqual | TimesEqual | DivideEqual | ModuleEqual
-;
+    PlusEqual | MinusEqual | TimesEqual | DivideEqual | ModuleEqual
+;   
 OPERADOR_UNARIO ::=
     Increment | Decrement
 ;
-OPERADOR_BOOLEANO ::=
-    True | False
-;
-ASIGNACION_VARIABLE ::=
-    T_DATO | 
-;
 DECLARACION ::=
-    ASIGNACION_VARIABLE Identificador P_coma |
-    ASIGNACION_VARIABLE Identificador OPERADOR_ATRIBUCION Numero P_coma |
-    ASIGNACION_VARIABLE Identificador OPERADOR_ATRIBUCION Identificador P_coma |
-    ASIGNACION_VARIABLE Identificador Asignation Numero P_coma |
-    ASIGNACION_VARIABLE Identificador Asignation Identificador P_coma |
-    ASIGNACION_VARIABLE Identificador Asignation Comillas Comillas P_coma |
-    ASIGNACION_VARIABLE Identificador Asignation Comillas Identificador Comillas P_coma
+    Identificador OPERADOR_UNARIO P_coma |
+    Identificador OPERADOR_ATRIBUCION Numero P_coma |
+    Identificador OPERADOR_ATRIBUCION Identificador P_coma |
+    Identificador Asignation Numero P_coma |
+    Identificador Asignation Identificador P_coma |
+    Identificador Asignation Comillas Comillas P_coma |
+    Identificador Asignation Comillas Identificador Comillas P_coma |
+    T_DATO Identificador OPERADOR_ATRIBUCION Numero P_coma |
+    T_DATO Identificador OPERADOR_ATRIBUCION Identificador P_coma |
+    T_DATO Identificador P_coma |
+    T_DATO Identificador Asignation Numero P_coma |
+    T_DATO Identificador Asignation Identificador P_coma |
+    T_DATO Identificador Asignation Comillas Comillas P_coma |
+    T_DATO Identificador Asignation Comillas Identificador Comillas P_coma
 ;
-SENTENCIA_BOOLEANA ::= 
+DECLARACION_FOR ::=
+    T_DATO Identificador |
+    Identificador
+;
+SENTENCIA_BOOLEANA ::=
     True |
     False |
     Identificador OPERADOR_RELACIONAL Comillas Comillas |
@@ -111,10 +116,10 @@ IF_ELSE ::=
     IF Else Llave_a SENTENCIA Llave_c
 ;
 FOR ::=
-    For Parent_a Parent_c
+    For Parent_a DECLARACION_FOR P_coma SENTENCIA_BOOLEANA P_coma DECLARACION Parent_c Llave_a SENTENCIA Llave_c
 ;
 DO_WHILE ::=
-    Do Llave_a Llave_c While
+    Do Llave_a SENTENCIA Llave_c While Parent_a SENTENCIA_BOOLEANA Parent_c P_coma
 ;
 SWITCH_CASE ::=
     Case Identificador Dos_P SENTENCIA |
@@ -122,10 +127,11 @@ SWITCH_CASE ::=
 ;
 SWITCH ::=
     Switch Parent_a Identificador Parent_c Llave_a SWITCH_CASE Default Dos_P SENTENCIA Llave_c
-;
+;   
 WHILE ::=
     While Parent_a SENTENCIA_BOOLEANA Parent_c Llave_a SENTENCIA Llave_c
 ;
 PRINTF ::=
-    Printf Parent_a  Parent_c
+    Printf Parent_a Identificador Parent_c P_coma |
+    Printf Parent_a Comillas Identificador Comillas Parent_c P_coma
 ;
