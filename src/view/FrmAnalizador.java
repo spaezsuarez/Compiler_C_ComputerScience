@@ -13,6 +13,7 @@ import properties.LexemasAnalyzer;
 import static util.Constants.Tokens;
 import properties.Sintaxis;
 import java_cup.runtime.Symbol;
+import util.Util;
 
 public class FrmAnalizador extends javax.swing.JFrame {
 
@@ -35,12 +36,18 @@ public class FrmAnalizador extends javax.swing.JFrame {
 
         BotonAnalisis = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        Resultado = new javax.swing.JTextArea();
+        inputCode = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtAnalizarLex = new javax.swing.JTextArea();
         btnArchivo = new javax.swing.JButton();
         Borrar1 = new javax.swing.JButton();
         btnArchivo1 = new javax.swing.JButton();
+        btnObject = new javax.swing.JButton();
+        btnMiddleCode = new javax.swing.JButton();
+        btnAssmbler = new javax.swing.JButton();
+        btnBinaryCode = new javax.swing.JButton();
+        btnExecute = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,10 +59,10 @@ public class FrmAnalizador extends javax.swing.JFrame {
             }
         });
 
-        Resultado.setColumns(20);
-        Resultado.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        Resultado.setRows(5);
-        jScrollPane1.setViewportView(Resultado);
+        inputCode.setColumns(20);
+        inputCode.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        inputCode.setRows(5);
+        jScrollPane1.setViewportView(inputCode);
 
         txtAnalizarLex.setColumns(20);
         txtAnalizarLex.setRows(5);
@@ -85,28 +92,67 @@ public class FrmAnalizador extends javax.swing.JFrame {
             }
         });
 
+        btnObject.setFont(new java.awt.Font("JetBrainsMono Nerd Font Mono", 0, 24)); // NOI18N
+        btnObject.setText("Generar Objeto");
+
+        btnMiddleCode.setFont(new java.awt.Font("JetBrainsMono Nerd Font Mono", 0, 24)); // NOI18N
+        btnMiddleCode.setText("Generar Intermedio");
+        btnMiddleCode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMiddleCodeActionPerformed(evt);
+            }
+        });
+
+        btnAssmbler.setFont(new java.awt.Font("JetBrainsMono Nerd Font Mono", 0, 24)); // NOI18N
+        btnAssmbler.setText("Generar Ensamblador");
+
+        btnBinaryCode.setFont(new java.awt.Font("JetBrainsMono Nerd Font Mono", 0, 24)); // NOI18N
+        btnBinaryCode.setText("Generar Ejecutable");
+
+        btnExecute.setFont(new java.awt.Font("JetBrainsMono Nerd Font Mono", 0, 24)); // NOI18N
+        btnExecute.setText("Ejecutar");
+
+        jLabel1.setText("Generador de archivos");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(197, 197, 197)
+                .addComponent(btnBinaryCode)
+                .addGap(68, 68, 68)
+                .addComponent(btnExecute)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnArchivo1)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(40, 40, 40)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnMiddleCode))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(BotonAnalisis)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                                .addComponent(Borrar1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane2))
-                        .addGap(73, 73, 73))))
+                                .addGap(40, 40, 40)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(BotonAnalisis)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(Borrar1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jScrollPane2))
+                                .addGap(73, 73, 73))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(btnObject))
+                                .addGap(40, 40, 40)
+                                .addComponent(btnAssmbler)
+                                .addGap(26, 26, 26))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,9 +167,19 @@ public class FrmAnalizador extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 508, Short.MAX_VALUE)
                     .addComponent(jScrollPane1))
-                .addGap(32, 32, 32)
+                .addGap(26, 26, 26)
                 .addComponent(btnArchivo1)
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnMiddleCode)
+                    .addComponent(btnObject)
+                    .addComponent(btnAssmbler))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBinaryCode)
+                    .addComponent(btnExecute)))
         );
 
         pack();
@@ -132,7 +188,7 @@ public class FrmAnalizador extends javax.swing.JFrame {
     private void analizarLexico() throws IOException {
         int cont = 1;
 
-        String expr = (String) Resultado.getText();
+        String expr = (String) inputCode.getText();
         LexemasAnalyzer lexicos = new LexemasAnalyzer(new StringReader(expr));
         String resultado = "LINEA " + cont + "\t\tSIMBOLO\n";
         while (true) {
@@ -392,7 +448,7 @@ public class FrmAnalizador extends javax.swing.JFrame {
 
         try {
             String ST = new String(Files.readAllBytes(arc.toPath()));
-            Resultado.setText(ST);
+            inputCode.setText(ST);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(FrmAnalizador.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -405,7 +461,7 @@ public class FrmAnalizador extends javax.swing.JFrame {
     }//GEN-LAST:event_Borrar1ActionPerformed
 
     private void btnArchivo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArchivo1ActionPerformed
-        String ST = Resultado.getText();
+        String ST = inputCode.getText();
         Sintaxis s = new Sintaxis(new properties.SymbolAnalyzerCup(new StringReader(ST)));
         try {
             s.parse();
@@ -419,12 +475,32 @@ public class FrmAnalizador extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnArchivo1ActionPerformed
 
+    private void btnMiddleCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMiddleCodeActionPerformed
+        inputCode.setText(" \n" +
+"#include <iostream>\n" +
+" \n" +
+"int main () \n" +
+"{\n" +
+"    std::cout << \"Hola, mundo\";\n" +
+"    return 0;\n" +
+"}");
+        Util.createFile(inputCode.getText());
+        Util.executeFile("intermedio");
+
+    }//GEN-LAST:event_btnMiddleCodeActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Borrar1;
     private javax.swing.JButton BotonAnalisis;
-    private javax.swing.JTextArea Resultado;
     private javax.swing.JButton btnArchivo;
     private javax.swing.JButton btnArchivo1;
+    private javax.swing.JButton btnAssmbler;
+    private javax.swing.JButton btnBinaryCode;
+    private javax.swing.JButton btnExecute;
+    private javax.swing.JButton btnMiddleCode;
+    private javax.swing.JButton btnObject;
+    private javax.swing.JTextArea inputCode;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea txtAnalizarLex;
