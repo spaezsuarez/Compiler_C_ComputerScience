@@ -21,7 +21,7 @@ public class Util {
     public static String result = "";
 
     public static void clearCacheData() {
-        String[] files = {"Program.cpp", "Program.i", "Program.o", "Program.s", "Program.exe", "Program", "Program.out"};
+        String[] files = {"Program.cpp", "Program.i", "Program.o", "Program.s", "Program.exe", "Program", "Program.out","Output.txt"};
         try {
             for (String file : files) {
                 Path direction = Paths.get(path.concat(file));
