@@ -1,5 +1,5 @@
 #!/bin/bash
 cd src/scripts
-cpp ../dist/Program.cpp > ../dist/Program.i
+as ../dist/Program.s -o ../dist/Program.o
 ls -la ../dist
 exit 0

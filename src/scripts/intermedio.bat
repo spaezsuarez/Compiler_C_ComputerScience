@@ -1,1 +1,4 @@
-cpp ../dist/Program.cpp > Program.i
+dir
+cd src/scripts
+cpp ../dist/Program.cpp > ../dist/Program.i
+exit 0
