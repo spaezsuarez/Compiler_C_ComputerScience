@@ -270,3 +270,24 @@ PRINTF ::=
     Printf Parent_a Comillas Identificador Comillas Parent_c P_coma
 ;
 ```
+
+# Cambios finales del proyecto
+## Creación de archivos
+
+Para esta ultima parte del proyecto se agregarón los ejecutables `.sh` o `.bat` (dependiendo de si se esta trabajando en linux o windows) para generar los distintos archivos que usa un compilador a la hora de generar el ejecutable
+
+<br>
+
+> **Nota**: `Es necesario concatenar a la varibale` **PATH** del sistema la ruta de algun compilador de c++` como lo puede ser mingw
+
+<br>
+
+![](img/1.png)
+
+Y ya usandolos a nivel del codigo generamos la siguiente salida en un carpeta llamada `dist`
+
+![](img/2.png)
+
+Ademas de eso se agrego en el codigo los botones para las llamadas de cada uno de los scripts, asi como el resultado de la ejecución del codigo.
+
+![](img/3.png)

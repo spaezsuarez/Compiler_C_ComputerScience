@@ -28,15 +28,6 @@ public class FrmAnalizador extends javax.swing.JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         Util.clearCacheData();
-        inputCode.setText(" \n"
-                + "#include <iostream>\n"
-                + " \n"
-                + "int main () \n"
-                + "{\n"
-                + "    std::cout << \"Hola, a tods\";\n"
-                + "    return 0;\n"
-                + "}"
-        );
     }
 
     /**
@@ -162,8 +153,8 @@ public class FrmAnalizador extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(BotonAnalisis)
@@ -173,7 +164,7 @@ public class FrmAnalizador extends javax.swing.JFrame {
                                 .addComponent(Borrar1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 608, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 591, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(28, 28, 28))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnMiddleCode)
@@ -184,7 +175,7 @@ public class FrmAnalizador extends javax.swing.JFrame {
                                 .addComponent(btnAssmbler)
                                 .addGap(48, 48, 48)
                                 .addComponent(btnObject)))
-                        .addGap(0, 62, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(215, 215, 215)
                 .addComponent(btnBinaryCode)
