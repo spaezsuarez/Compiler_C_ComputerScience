@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.StringReader;
 import java.nio.file.Files;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
@@ -513,6 +514,7 @@ public class FrmAnalizador extends javax.swing.JFrame {
     }//GEN-LAST:event_btnArchivo1ActionPerformed
 
     private void btnMiddleCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMiddleCodeActionPerformed
+        Util.clearCacheData();
         Util.createFile(inputCode.getText());
         btnAssmbler.setEnabled(false);
         btnObject.setEnabled(false);
@@ -550,6 +552,9 @@ public class FrmAnalizador extends javax.swing.JFrame {
 
     private void btnExecuteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExecuteActionPerformed
         Util.executeFile("ejecutar");
+        if (!Objects.equals(System.getProperty("os.name"), "Linux")) {
+            Util.readOutput();
+        };
         txtAnalizarLex.setText(Util.result);
     }//GEN-LAST:event_btnExecuteActionPerformed
 

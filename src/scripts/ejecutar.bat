@@ -1,4 +1,3 @@
-#!/bin/bash
 cd src/dist
-chmod +x ./Program
-./Program
+move Program.exe Program.out
+Program.out > Output.txt

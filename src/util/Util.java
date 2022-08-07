@@ -3,6 +3,7 @@ package util;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -10,6 +11,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Objects;
+import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 public class Util {
@@ -19,7 +21,7 @@ public class Util {
     public static String result = "";
 
     public static void clearCacheData() {
-        String[] files = {"Program.cpp", "Program.i", "Program.o", "Program.s","Program"};
+        String[] files = {"Program.cpp", "Program.i", "Program.o", "Program.s", "Program.exe", "Program", "Program.out"};
         try {
             for (String file : files) {
                 Path direction = Paths.get(path.concat(file));
@@ -87,6 +89,23 @@ public class Util {
             response = -1;
         }
         return response;
+    }
+
+    public static void readOutput() {
+        try {
+            String output = "";
+            File myObj = new File("src/dist/output.txt");
+            Scanner myReader = new Scanner(myObj);
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                output += data;
+            }
+            result = output;
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("No se pudo leer el contenido del output generado");
+            e.printStackTrace();
+        }
     }
 
 }

@@ -1,2 +1,2 @@
-g++ -Wall -S ../dist/Program.i
-exit 0 
+cd src/dist
+g++ -Wall -S ./Program.i
